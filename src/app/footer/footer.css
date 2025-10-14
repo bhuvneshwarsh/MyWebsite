@@ -1,0 +1,43 @@
+.footer {
+  background: lightgray;
+  color: black;
+  padding: 1rem 0;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #90caf9;
+}
+.social-icons a {
+  display: inline-block; /* Aligns icons horizontally */
+  margin: 0 10px; /* Adds space between icons */
+}
+
+.social-icons img {
+  width: 22px; /* Sets the image width */
+  height: auto; /* Maintains the aspect ratio */
+  transition: opacity 0.3s ease; /* Adds a smooth hover effect */
+}
+
+.social-icons a:hover img {
+  opacity: 0.8; /* Reduces opacity on hover */
+}
