@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class Footer {
 
+  imagePath_Insta:string = 'src/assets/XLogo.jpg';
+
 }

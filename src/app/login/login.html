@@ -1,0 +1,13 @@
+<div class="auth-card">
+  <form (ngSubmit)="onLogin()" autocomplete="off" #loginForm="ngForm">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email" required [(ngModel)]="login.email" name="email" #email="ngModel" />
+    <div *ngIf="email.invalid && email.touched" class="error">Email is required and must be valid.</div>
+    
+    <input type="password" placeholder="Password" required [(ngModel)]="login.password" name="password" #password="ngModel" />
+    <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div>
+    
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <div class="error" *ngIf="loginError">{{ loginError }}</div>
+  </form>
+</div>

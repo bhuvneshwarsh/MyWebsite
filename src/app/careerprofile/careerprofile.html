@@ -1,0 +1,27 @@
+<div class="career-profile-container">
+  <h2>My Career Profile</h2>
+  <button (click)="downloadPDF()" class="download-button" aria-label="Download Resume as PDF">Download Resume (PDF)</button>
+  <div class="timeline">
+    <div 
+      *ngFor="let item of timeline; let i=index"
+      class="timeline-step"
+      [class.active]="selectedIndex === i"
+      (click)="selectStep(i)"
+      tabindex="0"
+      aria-label="Select {{item.year}}"
+    >
+      {{item.year}}
+    </div>
+  </div>
+  <div class="timeline-details" *ngIf="selectedItem">
+    <h3>{{selectedItem.title}}</h3>
+    <h4>{{selectedItem.company}} <span class="timeline-location">{{selectedItem.Location}}</span></h4>
+    <p>{{selectedItem.period}}</p>
+    <ul>
+      <li *ngFor="let skill of selectedItem.skills">{{skill}}</li>
+    </ul>
+    <p>{{selectedItem.description}}</p>
+  </div>
+</div>
+
+

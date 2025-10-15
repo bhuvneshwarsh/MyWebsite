@@ -1,0 +1,50 @@
+.auth-card {
+  width: 360px;
+  margin: 5rem auto;
+  background: #f9fafd;
+  padding: 2rem 2.2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(66,110,220,0.30);
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form h2 {
+  text-align: center;
+  color: #1565c0;
+  margin-bottom: 1rem;
+}
+form input {
+  margin-bottom: 0.7rem;
+  border: 1px solid #ced2ec;
+  border-radius: 7px;
+  background: #f6f7fa;
+  padding: 0.7rem 1rem;
+  font-size: 1.07rem;
+  transition: border-color 0.2s;
+}
+form input:focus {
+  border-color: #3050e9;
+}
+form button {
+  margin-top: 0.3rem;
+  padding: 0.7rem;
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+form button:disabled {
+  background: #8ca7f8;
+  cursor: not-allowed;
+}
+.error {
+  color: #d0203b;
+  text-align: center;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}

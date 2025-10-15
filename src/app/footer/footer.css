@@ -4,7 +4,7 @@
   padding: 1rem 0;
   position: relative;
   font-family: 'Arial', sans-serif;
-  bottom: 0;
+  bottom: -275px;
   width: 100%;
 }
 
@@ -15,6 +15,7 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 1rem;
+  margin-bottom: auto;
 }
 
 .footer-link {

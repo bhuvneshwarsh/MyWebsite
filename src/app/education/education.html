@@ -1,0 +1,20 @@
+<div class="education-container">
+  <h2>My Education Journey</h2>
+
+  <!-- Timeline List -->
+  <div class="timeline">
+    <div *ngFor="let edu of educationDetails" class="timeline-item">
+      <div class="timeline-year">{{ edu.year }}</div>
+      <div class="timeline-content">
+        <h3>{{ edu.degree }}</h3>
+        <h4>{{ edu.institution }}</h4>
+        <p>{{ edu.details }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graph Section -->
+  <div class="chart-container">
+    <canvas id="educationChart"></canvas>
+  </div>
+</div>
