@@ -3,15 +3,8 @@
   <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm" novalidate>
     <div class="form-group">
       <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        [(ngModel)]="feedback.name"
-        #name="ngModel"
-        placeholder="Your full name"
-      />
+      <input type="text" id="name" name="name" required [(ngModel)]="feedback.name" #name="ngModel"
+        placeholder="Your full name" />
       <div class="error" *ngIf="name.invalid && name.touched">
         Name is required.
       </div>
