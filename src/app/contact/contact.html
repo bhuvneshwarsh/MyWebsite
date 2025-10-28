@@ -1,4 +1,4 @@
-    <div class="container">
+<div class="container">
         <h1>Contact Information</h1>
         <ul class="contact-list">
             <li>
@@ -11,27 +11,39 @@
             </li>
             <li>
                 <span class="contact-label">LinkedIn:</span>
-                <a class="contact-link" href="https://www.linkedin.com/in/bhuvneshwar-sh/" target="_blank" rel="noopener">Linkedin.com/in/bhuvneshwar-sh/</a>
+                <a class="contact-link" href="https://www.linkedin.com/in/bhuvneshwar-sh/" target="_blank" rel="noopener"> Linkedin.com/in/bhuvneshwar-sh/</a>
             </li>
             <li>
                 <span class="contact-label">GitHub:</span>
-                <a class="contact-link" href="https://github.com/bhuvneshwarsh" target="_blank" rel="noopener">GitHub.com/bhuvneshwarsh</a>
+                <a class="contact-link" href="https://github.com/bhuvneshwarsh" target="_blank" rel="noopener"> GitHub.com/bhuvneshwarsh</a>
             </li>
             <li>
-                <span class="contact-label">Location:</span>
+                <span class="contact-label"></span>
                 Current location: Delhi NCR, From: Gwalior, MP, India.
             </li>
         </ul>
         <div class="form-section">
             <h2>Send a Message</h2>
-            <form method="post" action="mailto:your.email@example.com" enctype="text/plain">
+            <form method="post" (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
                 <label for="name">Name:</label>
-                <input id="name" name="name" type="text" required placeholder="Your Name">
+                <input id="name" name="name" type="text" required placeholder="Your Name" [(ngModel)]="contact.name" #name="ngModel">
+                <div for="name" class="error" *ngIf="!isNameValid && name.touched">
+                    Name is required.
+                </div>
                 <label for="email">Email:</label>
-                <input id="email" name="email" type="email" required placeholder="Your Email">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Type your message..."></textarea>
-                <button type="submit">Send</button>
+                <input id="email" name="email" type="email" required placeholder="Your Email" [(ngModel)]="contact.email" #email="ngModel">
+                <div for="email" class="error" *ngIf="!isEmailValid && email.touched">
+                    Valid email is required.
+                </div>
+                <label for="usermessage1">Message:</label>
+                <textarea id="usermessage1" name="usermessage1" rows="5" required placeholder="Type your message..." [(ngModel)]="contact.usermessage1" #usermessage1="ngModel"></textarea>
+                <div for="usermessage1" class="error" *ngIf="!isMessageValid && usermessage1.touched">
+                    Message must be at least 50 characters long.
+                </div>
+                <button type="submit" [disabled]="!isNameValid || !isEmailValid || !isMessageValid">Send</button>
+                <div *ngIf="submitted">
+                    <p class="success-message">Your message has been sent successfully!</p>
+                </div>
             </form>
         </div>
     </div>

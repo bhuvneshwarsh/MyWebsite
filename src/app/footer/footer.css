@@ -6,6 +6,7 @@
   font-family: 'Arial', sans-serif;
   bottom: -275px;
   width: 100%;
+  /* position: sticky; */
 }
 
 .footer-container {
@@ -34,11 +35,12 @@
 }
 
 .social-icons img {
-  width: 22px; /* Sets the image width */
+  width: 30px; /* Sets the image width */
   height: auto; /* Maintains the aspect ratio */
   transition: opacity 0.3s ease; /* Adds a smooth hover effect */
 }
 
 .social-icons a:hover img {
   opacity: 0.8; /* Reduces opacity on hover */
+  transform: scale(1.2); /* Slightly enlarges the icon on hover */
 }

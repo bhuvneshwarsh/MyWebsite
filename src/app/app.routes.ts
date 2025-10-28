@@ -9,6 +9,11 @@ import { Home } from './home/home';
 import { NgModule } from '@angular/core';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
+import { PageNotFound } from './page-not-found/page-not-found';
+import { ForgotPassword } from './forgot-password/forgot-password';
+import { OtpValidation } from './otp-validation/otp-validation';
+import { Userprofile } from './userprofile/userprofile';
+import { VerifySignEmailOTP } from './verify-sign-email-otp/verify-sign-email-otp';
 
 export const routes: Routes = [
 
@@ -21,6 +26,11 @@ export const routes: Routes = [
     {path: 'home', component: Home, pathMatch: 'full' },
     {path: 'login', component: Login },
     {path: 'signup', component: Signup },
+    {path: 'forgot-password', component: ForgotPassword },
+    {path: 'otp-validation', component: OtpValidation },
+    {path: 'userprofile', component: Userprofile },
+    {path: 'verify-sign-email-otp', component: VerifySignEmailOTP },
+    {path: '**', component: PageNotFound }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

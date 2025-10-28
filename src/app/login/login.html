@@ -1,13 +1,17 @@
 <div class="auth-card">
-  <form (ngSubmit)="onLogin()" autocomplete="off" #loginForm="ngForm">
+  <form (ngSubmit)="onLogin()" method="get" autocomplete="off" #loginForm="ngForm">
     <h2>Login</h2>
-    <input type="email" placeholder="Email" required [(ngModel)]="login.email" name="email" #email="ngModel" />
-    <div *ngIf="email.invalid && email.touched" class="error">Email is required and must be valid.</div>
+    <input type="email" placeholder="Email: email@example.com" required [(ngModel)]="login.email" name="email" #email="ngModel" />
+    <!-- <div *ngIf="email.invalid && email.touched" class="error">Email is required and must be valid.</div> -->
+    <div *ngIf="!validEmail && email.touched" class="error">Please enter a valid registered email address.</div>
     
     <input type="password" placeholder="Password" required [(ngModel)]="login.password" name="password" #password="ngModel" />
-    <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div>
-    
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <!-- <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div> -->
+    <div *ngIf="!passwordValidation && password.touched" class="error">Password must be at least 6 characters long, contain an uppercase letter, a number, a special character, and be less than 20 characters.</div>
+
+    <button type="submit" [disabled]="loginForm.invalid || !validEmail || !passwordValidation">Login</button>
     <div class="error" *ngIf="loginError">{{ loginError }}</div>
+    <p style="font-family: Arial, Helvetica, sans-serif; text-decoration: none;">Don't have an account? <a routerLink="/signup">Sign Up</a></p>
+    <p><a style="font-family: Arial, Helvetica, sans-serif; text-decoration: none;" routerLink="/forgot-password">Forgot Password?</a></p>
   </form>
 </div>

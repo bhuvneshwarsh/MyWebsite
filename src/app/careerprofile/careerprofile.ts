@@ -25,7 +25,7 @@ export class Careerprofile {
       company: 'Cognizant Technology Solutions',
       Location: 'Chennai, India (Remote)',
       period: 'March 2021 - Feb 2022',
-      skills: ['ASP.NET Core', 'Angular', 'SQL Server'],
+      skills: ['ASP.NET Core', 'ASP.Net Web API', 'SQL Server'],
       description: `I have gone through a continuous training and demo project duing first three months. Worked on the multiple client accounts.`
     },
     {
@@ -43,8 +43,8 @@ export class Careerprofile {
       company: 'Cognizant Technology Solutions',
       Location: 'Gurugram, India (Hybrid)',
       period: 'March 2023 - Present',
-      skills: ['ASP.NET Core', 'Angular', 'SQL Server', 'Azure', 'Azure DevOps', 'Data Structures', 'Algorithms'],
-      description: `Developed multiple projects by self like Employee Management System, Unstructured Database Management System and this Website. Eager to learn more technologies and explore new opportunities.`
+      skills: ['ASP.NET Core', 'ASP.Net Core Web API', 'Angular', 'SQL Server', 'Azure', 'Azure DevOps', 'Data Structures', 'Algorithms'],
+      description: `Developed multiple projects by self like Employee Management System, Unstructured Database Management System and this My profile Website. Eager to learn more technologies and explore new opportunities.`
     },
     {
       year: '2025',
@@ -52,8 +52,8 @@ export class Careerprofile {
       company: 'Self',
       Location: 'Remote',
       period: 'Jan 2024 – Present',
-      skills: ['Educational Content', 'Interview Preparation', 'New technologies', 'Motivating New comers'],
-      description: `Created a thriving YouTube channel focused on SSC CGL exam strategies, technology tutorials, and motivational content, blending technical skills with communication expertise.`
+      skills: ['Educational Content', 'Interview Preparation', 'New technologies', 'Topic wise DSA & Algo lectures', 'Motivating New comers'],
+      description: `Created a thriving YouTube channel focused on all Dotnet Full Stack Technical Skills & strategies, tutorials, and motivational content, blending technical skills with communication expertise.`
     }
   ];
 
@@ -74,7 +74,4 @@ downloadPDF(): void {
     link.target = '_blank';
     link.click();
   }
-
-  // pdfSrc = 'https://drive.google.com/file/d/12UgdGItti90M80v49rGTbxT4ZKDZ2wX2/preview';
-
 }

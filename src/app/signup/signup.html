@@ -1,20 +1,24 @@
 <div class="auth-card">
-  <form (ngSubmit)="onSignup()" autocomplete="off" #signupForm="ngForm"> 
+  <form (ngSubmit)="onSignup()" autocomplete="off" method="post" #signupForm="ngForm"> 
     <h2>Sign Up</h2>
     <input type="text" placeholder="Full Name" required [(ngModel)]="signup.name" name="name" #name="ngModel" />
-    <div *ngIf="name.invalid && name.touched" class="error">Name is required.</div>
-    
-    <input type="email" placeholder="Email" required [(ngModel)]="signup.email" name="email" #email="ngModel" />
-    <div *ngIf="email.invalid && email.touched" class="error">Valid Email is required.</div>
+    <!-- <div *ngIf="name.invalid && name.touched" class="error">Name is required.</div> -->
+    <div *ngIf="!validName && name.touched" class="error">Name must be between 6 and 30 characters.</div>
+
+    <input type="email" placeholder="Email: email@example.com" required [(ngModel)]="signup.email" name="email" #email="ngModel" />
+    <!-- <div *ngIf="email.invalid && email.touched" class="error">Valid Email is required.</div> -->
+    <div *ngIf="!validEmail && email.touched" class="error">Please enter a valid email address.</div>
     
     <input type="password" placeholder="Password" required [(ngModel)]="signup.password" name="password" #password="ngModel" />
     <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div>
-    
+    <div *ngIf="!passwordValidation && password.touched" class="error">Password must be at least 6 characters long, contain an uppercase letter, a number, a special character, and be less than 20 characters.</div>
+
     <input type="password" placeholder="Confirm Password" required [(ngModel)]="signup.confirm" name="confirm" #confirm="ngModel" />
     <div *ngIf="confirm.invalid && confirm.touched" class="error">Please confirm your password.</div>
     <div *ngIf="passwordMismatch" class="error">Passwords do not match.</div>
-    
-    <button type="submit" [disabled]="signupForm.invalid || passwordMismatch">Sign Up</button>
+
+    <button type="submit" [disabled]="signupForm.invalid || passwordMismatch || !passwordValidation || !validEmail || !validName">Sign Up</button>
     <div class="error" *ngIf="signupError">{{ signupError }}</div>
+    <p style="font-family: Arial, Helvetica, sans-serif; text-decoration: none;">Already have an account? <a routerLink="/login">Login</a></p>
   </form>
 </div>

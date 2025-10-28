@@ -1,0 +1,18 @@
+<p *ngIf="!authService.loginInfo.isloggedin">You are not logged in. Please log in to view your profile. <a
+        routerLink="/login">Click to login now</a></p>
+
+<div *ngIf="authService.loginInfo.isloggedin" class="profile-container">
+    <h1>User Profile</h1>
+    <label class="welcome-label" *ngIf="authService.loginInfo.isloggedin">Welcome, {{
+        authService.loginInfo.username}}!</label>
+    <div class="user-info" *ngIf="authService.loginInfo.isloggedin">
+        <p><strong>Name:</strong> {{ authService.loginInfo.username }}</p>
+        <p><strong>Email:</strong> {{ authService.loginInfo.email }}</p>
+        <p><strong>Role:</strong> {{ authService.loginInfo.role }}</p>
+        <p><strong>Status:</strong> {{ authService.loginInfo.isloggedin ? 'Logged In' : 'Logged Out' }}</p>
+        <div class="button-group">
+            <button routerLink="/home" class="btn btn-primary">Go to Home</button>
+            <button (click)="logout()" class="btn btn-danger">Logout</button>
+        </div>
+    </div><!-- Add more user details as needed -->
+</div>
