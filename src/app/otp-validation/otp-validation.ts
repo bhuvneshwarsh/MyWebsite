@@ -2,6 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { APIService } from '../services/apiservice';
 
 @Component({
   selector: 'app-otp-validation',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OtpValidation {
 
-constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private apiservice: APIService) { }
 
   otpValidation = { otp: '', email: '' };
   otpError = '';
@@ -33,12 +34,20 @@ constructor(private route: ActivatedRoute, private router: Router) {}
     // Simple validation, replace with API call
 
     if (this.validOtp) {
-      alert('OTP validated successfully.');
-      // Proceed with email verification  
-      getUserDetailsWithEmail()
-      this.router.navigate(['/login']);
+      this.apiservice.verifyOtp(this.otpValidation.email, this.otpValidation.otp).subscribe(response => {
+        // Handle successful OTP verification
+        console.log('OTP verification response:', response.status, response);
+          alert('OTP validated successfully.');
+          this.router.navigate(['/updatepassword'], { queryParams: { email: this.otpValidation.email } });
+        
+      }, error => {
+        console.error('Error verifying OTP:', error);
+        this.otpValidationError = 'Failed to validate OTP. Please try again.';
+      });
     } else {
-      this.otpError = 'Please enter a valid 6-digit OTP.';
+      this.otpValidationError = 'Please enter a valid 6-digit OTP.';
     }
   }
 }
+
+  

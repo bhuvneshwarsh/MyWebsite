@@ -1,24 +1,37 @@
 <div class="auth-card">
-  <form (ngSubmit)="onSignup()" autocomplete="off" method="post" #signupForm="ngForm"> 
+  <form (ngSubmit)="onSignup()" autocomplete="off" method="post" #signupForm="ngForm">
     <h2>Sign Up</h2>
+    <!-- <p *ngIf="whetherOtpSent" style="color: green; font-family: Arial, Helvetica, sans-serif;">An OTP has been sent to your email. Please verify to complete registration.</p> -->
     <input type="text" placeholder="Full Name" required [(ngModel)]="signup.name" name="name" #name="ngModel" />
     <!-- <div *ngIf="name.invalid && name.touched" class="error">Name is required.</div> -->
     <div *ngIf="!validName && name.touched" class="error">Name must be between 6 and 30 characters.</div>
 
-    <input type="email" placeholder="Email: email@example.com" required [(ngModel)]="signup.email" name="email" #email="ngModel" />
+    <input type="email" placeholder="Email: email@example.com" required [(ngModel)]="signup.email" name="email"
+      #email="ngModel" />
     <!-- <div *ngIf="email.invalid && email.touched" class="error">Valid Email is required.</div> -->
     <div *ngIf="!validEmail && email.touched" class="error">Please enter a valid email address.</div>
-    
-    <input type="password" placeholder="Password" required [(ngModel)]="signup.password" name="password" #password="ngModel" />
-    <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div>
-    <div *ngIf="!passwordValidation && password.touched" class="error">Password must be at least 6 characters long, contain an uppercase letter, a number, a special character, and be less than 20 characters.</div>
 
-    <input type="password" placeholder="Confirm Password" required [(ngModel)]="signup.confirm" name="confirm" #confirm="ngModel" />
+    <input type="password" placeholder="Password" required [(ngModel)]="signup.password" name="password"
+      #password="ngModel" />
+    <div *ngIf="password.invalid && password.touched" class="error">Password is required.</div>
+    <div *ngIf="!passwordValidation && password.touched" class="error">Password must be at least 6 characters long,
+      contain an uppercase letter, a number, a special character, and be less than 20 characters.</div>
+
+    <input type="password" placeholder="Confirm Password" required [(ngModel)]="signup.confirm" name="confirm"
+      #confirm="ngModel" />
     <div *ngIf="confirm.invalid && confirm.touched" class="error">Please confirm your password.</div>
     <div *ngIf="passwordMismatch" class="error">Passwords do not match.</div>
 
-    <button type="submit" [disabled]="signupForm.invalid || passwordMismatch || !passwordValidation || !validEmail || !validName">Sign Up</button>
+    <button type="submit"
+      [disabled]="signupForm.invalid || passwordMismatch || !passwordValidation || !validEmail || !validName">Sign
+      Up</button>
     <div class="error" *ngIf="signupError">{{ signupError }}</div>
-    <p style="font-family: Arial, Helvetica, sans-serif; text-decoration: none;">Already have an account? <a routerLink="/login">Login</a></p>
+    <p style="font-family: Arial, Helvetica, sans-serif; text-decoration: none;">Already have an account? <a
+        routerLink="/login">Login</a></p>
+    <div class="error" *ngIf="signupError">{{ signupError }}</div>
+    <!-- <input *ngIf="whetherOtpSent" type="text" placeholder="Enter OTP sent to your email" required [(ngModel)]="otpValidation.otp" name="otp" #otp="ngModel" />
+      <div *ngIf="whetherOtpSent && !validOtp" class="error">Please enter a valid OTP.</div>
+        <button *ngIf="whetherOtpSent" type="submit" [disabled]="signupForm.invalid || !validOtp">Validate OTP</button> -->
+    <!-- <div class="error" *ngIf="otpValidationError">{{ otpValidationError }}</div> -->
   </form>
 </div>

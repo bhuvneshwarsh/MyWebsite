@@ -2,6 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { APIService } from '../services/apiservice';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class ForgotPassword {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiservice: APIService) {}
 
   forgotPassword = { email: '' };
   forgotPasswordError = '';
@@ -25,10 +26,15 @@ export class ForgotPassword {
 
   onForgotPassword() {
     this.forgotPasswordError = '';
-    // Simple validation, replace with API call
     if (this.validEmail) {
-      alert('OTP has been sent to your registered email address.');
-      this.router.navigate(['/otp-validation'], { queryParams: { email: this.forgotPassword.email } });
+      this.apiservice.sendOtp(this.forgotPassword.email).subscribe(response => {
+        alert('OTP has been sent successfully to ' + this.forgotPassword.email);
+        this.router.navigate(['/otp-validation'], { queryParams: { email: this.forgotPassword.email } });
+        console.log('OTP sent response:', response);
+      }, error => {
+        // Handle error in sending OTP
+        this.forgotPasswordError = 'Failed to send OTP. Please try again.';
+      });
     } else {
       this.forgotPasswordError = 'Please enter a valid registered email address.';
     }

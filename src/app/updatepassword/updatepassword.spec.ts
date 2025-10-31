@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerifySignEmailOTP } from './verify-sign-email-otp';
+import { Updatepassword } from './updatepassword';
 
-describe('VerifySignEmailOTP', () => {
-  let component: VerifySignEmailOTP;
-  let fixture: ComponentFixture<VerifySignEmailOTP>;
+describe('Updatepassword', () => {
+  let component: Updatepassword;
+  let fixture: ComponentFixture<Updatepassword>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VerifySignEmailOTP]
+      imports: [Updatepassword]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VerifySignEmailOTP);
+    fixture = TestBed.createComponent(Updatepassword);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

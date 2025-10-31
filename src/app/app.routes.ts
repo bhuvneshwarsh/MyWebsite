@@ -13,10 +13,11 @@ import { PageNotFound } from './page-not-found/page-not-found';
 import { ForgotPassword } from './forgot-password/forgot-password';
 import { OtpValidation } from './otp-validation/otp-validation';
 import { Userprofile } from './userprofile/userprofile';
-import { VerifySignEmailOTP } from './verify-sign-email-otp/verify-sign-email-otp';
+import { Updatepassword } from './updatepassword/updatepassword';
 
 export const routes: Routes = [
 
+    {path: '', redirectTo:'/home', pathMatch:"full"},
     {path: 'header', component: Header },
     {path: 'contact', component: Contact },
     {path: 'careerprofile', component: Careerprofile },
@@ -29,7 +30,7 @@ export const routes: Routes = [
     {path: 'forgot-password', component: ForgotPassword },
     {path: 'otp-validation', component: OtpValidation },
     {path: 'userprofile', component: Userprofile },
-    {path: 'verify-sign-email-otp', component: VerifySignEmailOTP },
+    {path: 'updatepassword', component: Updatepassword },
     {path: '**', component: PageNotFound }
 ];
 @NgModule({

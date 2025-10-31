@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { APIService } from '../services/apiservice';
 import { ISignup } from '../interface/ISignup';
-import { ILogin } from '../interface/ILogin';
 import { AuthService } from '../services/authservice';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-login',
@@ -18,22 +19,27 @@ export class Login {
 
   constructor(private apiservice: APIService, private authService: AuthService, private router: Router) {}
 
-  login = { email: '', password: '' };
+  login = { name: '', email: '', password: '' };
+  loginProtect = { name: '', email: '', password: '' };
   loginError = '';
 
   onLogin() {
     this.loginError = '';
-    // Simple validation, replace with API call
-    this.apiservice.getLoginDetails().subscribe((response: ISignup[]) => {
-      const user = response.find(u => u.email === this.login.email && u.password === this.login.password);
-      if (user) {
-        this.authService.loginInfo = { isloggedin: true, username: user.name , email: user.email, role: 'Personal login' };
-        alert('Login successful! Hello ' + user.name + '.');
+    
+    this.loginProtect.password = CryptoJS.SHA256(this.login.password).toString();
+    this.loginProtect.email= this.login.email;
+
+    this.apiservice.getLoginDetails(this.loginProtect).subscribe((response: ISignup) => {
+      if (response && response.email === this.login.email) {
+        this.authService.loginInfo = { isloggedin: true, username: response.name , email: response.email, role: 'Personal login' };
+        alert('Login successful! Hello ' + response.name + '.');
         // Redirect to home or dashboard
         this.router.navigate(['/home']);
       } else {
         this.loginError = 'Invalid email or password.';
       }
+    },error =>{
+      this.loginError = 'Invalid email or password.';
     });
   }
   get validEmail(): boolean {
