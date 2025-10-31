@@ -9,6 +9,7 @@ export function initializeApp(configService: ConfigService) {
   return () => configService.loadConfig();
 }
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),

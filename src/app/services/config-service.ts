@@ -10,12 +10,10 @@ private config: any;
 
   constructor(private http: HttpClient) {}
 
-  loadConfig() {
-    return this.http.get('/assets/config/config.json')
-      .toPromise()
-      .then(data => {
-        this.config = data;
-      });
+  async loadConfig() {
+    const data = await this.http.get('/assets/config/config.json')
+      .toPromise();
+    this.config = data;
   }
 
   get apiUrl(): string {
