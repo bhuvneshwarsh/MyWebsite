@@ -1,6 +1,6 @@
 {
 
-    "apiUrl": "https://localhost:5001/",
+    "apiUrl": "https://dotnetcoreapi-bsa5f3gpdebeecea.centralindia-01.azurewebsites.net/",
     "hostUrl": "http://localhost:4200/callback"
 
 
