@@ -3,6 +3,7 @@
   margin: 40px auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -66,4 +67,44 @@ h2 {
   box-shadow: black 0px 0px 10px -3px;
   margin: 0 auto;
   border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .education-container {
+    padding: 0 8px;
+    margin: 20px auto;
+  }
+  .timeline {
+    padding-left: 10px;
+    margin-left: 0;
+    margin-bottom: 24px;
+    border-left-width: 2px;
+  }
+  .timeline-item {
+    margin-bottom: 16px;
+  }
+  .timeline-item::before {
+    left: -8px;
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+  .timeline-year {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+  .timeline-content h4 {
+    font-size: 0.95rem;
+  }
+  .chart-container {
+    max-width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+  }
 }

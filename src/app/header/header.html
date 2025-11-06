@@ -2,31 +2,43 @@
   <div class="navbar-container">
     <a class="navbar-brand" routerLink="home">
       <img src="assets/profile.png" alt="Image" class="profile-pic">
-      Bhuvneshwar M. Sharma<br>
+      MyProfile
+      <br>
       <span class="brand-role">Welcome's you!</span>
     </a>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="careerprofile">Career Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="education">Education</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" (click)="getLoginValidated()" routerLink="gallery">Gallery</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="contact">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="feedback">Feedback</a>
-      </li>
-    </ul>
-    <div>
-      <input class="navbar-Search" type="text" placeholder="Search...">
-      <button (click)="search()" class="btn btn-search">Search</button>
-      <button *ngIf="!authService.loginInfo.isloggedin" routerLink="login" class="btn btn-secondary">Login</button>
-      <button *ngIf="!authService.loginInfo.isloggedin" routerLink="signup" class="btn btn-primary">Sign Up</button>
+    <div class="menu-icons-container">
+      <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+      <button *ngIf="!authService.loginInfo.isloggedin" class="login-signup" (click)="loginsignupMenu()" aria-label="Login/signup navigation">
+        &#9094;
+      </button>
+    </div>
+    <div [class.open]="menuOpen" class="navbar-links">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="careerprofile">Career Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="education">Education</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" (click)="getLoginValidated()" routerLink="gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="feedback">Feedback</a>
+        </li>
+      </ul>
+    </div>
+    <!-- <input class="navbar-Search" type="text" placeholder="Search...">
+        <button (click)="search()" class="btn btn-search">Search</button> -->
+
+    <div *ngIf="!authService.loginInfo.isloggedin" [class.open]="loginsignupOpen" class="login-signup-links">
+      <button routerLink="login" class="btn btn-secondary">Login</button>
+      <button routerLink="signup" class="btn btn-primary">Sign Up</button>
     </div>
     <!-- Profile Icon + Dropdown Menu -->
     <div *ngIf="authService.loginInfo.isloggedin" class="dropdown">
@@ -38,7 +50,6 @@
         <a href="" (click)="logout()">Logout</a>
       </div>
     </div>
-
     <!-- <div *ngIf="authService.loginInfo.isloggedin" class="welcome-label">
       Welcome, {{ authService.loginInfo.username }}!
       <button (click)="logout()" class="btn btn-danger">Logout</button>

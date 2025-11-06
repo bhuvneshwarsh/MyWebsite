@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { RouterLink, Router, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/authservice';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.css'
 })
 export class Header {
-  constructor(private router: Router, public authService: AuthService) {}
+  menuOpen = false;
+  loginsignupOpen = false;
+
+  constructor(private router: Router, public authService: AuthService, private elementRef: ElementRef) {}
 
   goToLogin() {
     this.router.navigate(['/login']);
@@ -32,5 +35,26 @@ export class Header {
   }
   search() {
     alert("Search functionality is not implemented yet. Will be available in future updates.");
+  }
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    this.loginsignupOpen = false;
+  }
+  loginsignupMenu() {
+    this.loginsignupOpen = !this.loginsignupOpen;
+    this.menuOpen = false;
+  }
+
+  // Listen for clicks on the whole document
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Only act if menu is open
+    if (this.menuOpen || this.loginsignupOpen) {
+      const clickedInside = this.elementRef.nativeElement.contains(event.target);
+      if (!clickedInside) {
+        this.menuOpen = false;
+        this.loginsignupOpen = false;
+      }
+    }
   }
 }
