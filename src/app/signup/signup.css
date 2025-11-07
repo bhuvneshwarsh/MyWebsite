@@ -49,3 +49,33 @@ form button:disabled {
   margin-top: 0.3rem;
   font-size: 0.95rem;
 }
+
+@media (max-width: 600px) {
+  .auth-card {
+    width: 98vw;
+    min-width: 0;
+    margin: 2rem auto;
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(66,110,220,0.18);
+  }
+  form input, form button {
+    font-size: 1rem;
+    padding: 0.6rem 0.7rem;
+  }
+  form h2 {
+    font-size: 1.2rem;
+  }
+  .error {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .auth-card {
+    padding: 0.5rem 0.2rem;
+  }
+  form h2 {
+    font-size: 1rem;
+  }
+}
