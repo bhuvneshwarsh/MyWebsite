@@ -261,7 +261,7 @@
     position: absolute;
     top: 120px; /* adjust based on your navbar height */
     right: 0;
-    width: 35%;
+    width: 45%;
     z-index: 1001;
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     padding: 1rem 0.5rem;
