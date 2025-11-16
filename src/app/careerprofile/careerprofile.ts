@@ -69,7 +69,7 @@ export class Careerprofile {
 
 downloadPDF(): void {
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/12UgdGItti90M80v49rGTbxT4ZKDZ2wX2/view?usp=drive_link';
+    link.href = 'https://drive.google.com/file/d/1bnhE0bD9Ayd0QPtz2LDKY5gp8O9VB2kK/view?usp=sharing';
     link.download = 'Bhuvneshwar_resume.pdf';
     link.target = '_blank';
     link.click();
